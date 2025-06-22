@@ -1,7 +1,7 @@
 # argp
 Modest argument parser for C programming language.
 
-## Features
+## ✨ Features
 
 - Supports:
   - Boolean flags (e.g., `--verbose`)
@@ -11,14 +11,31 @@ Modest argument parser for C programming language.
 - No external libraries or dependencies
 - Designed to be embedded in any C project
 
-## Compilation
-Simply compile main source along with `argp.c`:
+## 🛠️ Compilation
+To successfully compile the project, make sure to build your main source file (e.g. example.c) together with argp.c. The argp.c file contains the implementation of the interface declared in argp.h, and must be compiled as part of the final binary — it is not a precompiled library.
+
+A minimal compilation command using clang:
 
 ```bash
 clang example.c argp.c -o program
 ```
+If you're using gcc, the command is essentially the same:
 
-## Basic usage with all argument types
+```bash
+gcc example.c argp.c -o program
+```
+Ensure that both argp.c and argp.h are in the same directory as your main source file. If they reside elsewhere, remember to adjust include paths accordingly:
+
+```bash
+clang -I./include example.c path/to/argp.c -o program
+```
+> 📎 Note: argp.c includes argp.h, so the header file must be visible during compilation. If you're planning to use this module across multiple projects or scale it further, consider setting up a simple Makefile for better maintainability.
+
+
+
+## 🧪 Basic usage with all argument types
+### 🧱 Example code
+
 ```c
 #include <stdio.h>
 #include <stdlib.h>
@@ -67,7 +84,7 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-Example input and output:
+### 🧪 Input and output after compiling:
 ```bash
 $ ./program program.c --verbose -o output.txt
 Verbose: ON
@@ -75,7 +92,8 @@ Output file: output.txt
 Input file: program.c
 $ 
 ```
-## Passing Data to Arguments
+
+## ⚙️ Passing Data to Arguments
 
 ### 📌 Positional Arguments
 
